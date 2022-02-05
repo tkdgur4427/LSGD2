@@ -1,0 +1,3 @@
+[submodule "SGDPyUtil"]
+	path = SGDPyUtil
+	url = https://github.com/tkdgur4427/SGDPyUtil.git

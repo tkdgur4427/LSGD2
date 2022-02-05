@@ -1,32 +1,19 @@
-# Prerequisites
-*.d
+# python
+.venv
+__pycache__
+*.pyc
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# ignore ThirdLibrary (managed by bootstrap.py)
+LSGD/ThirdLibrary/src/
+LSGD/ThirdLibrary/archive/
 
-# Precompiled Headers
-*.gch
-*.pch
+# bootstrap intermediate files
+.bootstrap.json
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# ignore log files
+*.log.*
+*.log
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Output, Intermediate
+Output
+Intermediate
