@@ -30,10 +30,25 @@ def main():
         debug_arg = "-verbose"
 
     # execute fbuild.exe
-    fbuild_path = os.path.abspath(os.path.join(".", "FBuild"))
+    fbuild_path = os.path.abspath(os.path.join(".", "Tools", "FBuild"))
     bff_path = os.path.abspath(os.path.join(".", "Intermediate", "fbuild.bff"))
     fbuild_cmd = f"fbuild -config {bff_path} {debug_arg}"
     execute_command(fbuild_cmd, True, fbuild_path)
+
+    # debug executable
+    try_debug = True
+    if try_debug:
+        # get remedybg binary file path
+        remedybg_path = os.path.abspath(
+            os.path.join(".", "Tools", "RemedyBG", "remedybg.exe")
+        )
+        # get output path by build_configuration
+        executable_path = FastBuild.instance().get_output_path(build_configuration)
+        executable_filename = os.path.join(executable_path, "Launch.exe")
+        # generate cmd
+        remedybg_cmd = f"{remedybg_path} -g {executable_filename}"
+        # try to debug
+        execute_command(remedybg_cmd, True)
 
     return
 
