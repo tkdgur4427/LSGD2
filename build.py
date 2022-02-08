@@ -15,6 +15,11 @@ def main():
     # import modules
     FastBuild.instance().import_modules()
 
+    # setup third libraries
+    FastBuild.instance().setup_third_libraries(
+        os.path.abspath(os.path.join(".", "LSGD", "ThirdLibrary"))
+    )
+
     # setup
     output_path = os.path.abspath(os.path.join(".", "Output"))
     intermediate_path = os.path.abspath(os.path.join(".", "Intermediate"))
@@ -24,7 +29,7 @@ def main():
     FastBuild.instance().generate_bff_file(build_configuration)
 
     # define debug mode
-    is_debug_mode = False
+    is_debug_mode = True
     debug_arg = ""
     if is_debug_mode:
         debug_arg = "-verbose"
@@ -36,7 +41,7 @@ def main():
     execute_command(fbuild_cmd, True, fbuild_path)
 
     # debug executable
-    try_debug = True
+    try_debug = False
     if try_debug:
         # get remedybg binary file path
         remedybg_path = os.path.abspath(

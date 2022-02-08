@@ -17,6 +17,7 @@ class LaunchModule(FBModule):
 
         # add dependencies
         self.add_dependency("Engine")
+        self.add_dependency("glad")
 
         return
 

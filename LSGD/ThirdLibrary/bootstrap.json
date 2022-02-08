@@ -1,10 +1,27 @@
 [
     {
-        "name": "vulkan",
+        "name": "glfw",
         "source": {
             "type": "git",
-            "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
-            "revision": "v1.2.178"
+            "url": "https://github.com/glfw/glfw.git",
+            "revision": "3.3.4",
+            "cmake_args": "-DUSE_MSVC_RUNTIME_LIBRARY_DLL=OFF",
+            "deps": {
+                "libs": [
+                    "gdi32.lib",
+                    "user32.lib",
+                    "shell32.lib"
+                ]
+            }
+        }
+    },
+    {
+        "name": "assimp",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/assimp/assimp.git",
+            "src": "code",
+            "revision": "a9f82dbe0b8a658003f93c7b5108ee4521458a18"
         }
     }
 ]
