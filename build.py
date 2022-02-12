@@ -29,7 +29,7 @@ def main():
     FastBuild.instance().generate_bff_file(build_configuration)
 
     # define debug mode
-    is_debug_mode = True
+    is_debug_mode = False
     debug_arg = ""
     if is_debug_mode:
         debug_arg = "-verbose"
@@ -41,7 +41,7 @@ def main():
     execute_command(fbuild_cmd, True, fbuild_path)
 
     # debug executable
-    try_debug = False
+    try_debug = True
     if try_debug:
         # get remedybg binary file path
         remedybg_path = os.path.abspath(
