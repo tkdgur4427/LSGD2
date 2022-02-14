@@ -6,7 +6,7 @@
 
 #include "Chapters.h"
 
-static const char *shaderCodeVertex = R"(
+static const char *Chapter2_GLFW_shaderCodeVertex = R"(
 #version 460 core
 layout (location=0) out vec3 color;
 const vec2 pos[3] = vec2[3](
@@ -26,7 +26,7 @@ void main()
 }
 )";
 
-static const char *shaderCodeFragment = R"(
+static const char *Chapter2_GLFW_shaderCodeFragment = R"(
 #version 460 core
 layout (location=0) in vec3 color;
 layout (location=0) out vec4 out_FragColor;
@@ -42,7 +42,7 @@ int Chapter2::GLFW_main(void)
     glfwSetErrorCallback(
         [](int error, const char *desc)
         {
-            fprintf(stderr, "Error: %s\n", desc);
+            fprintf(stderr, "Error: [%d][%s]\n", error, desc);
         });
 
     // init GLFW library
@@ -66,6 +66,8 @@ int Chapter2::GLFW_main(void)
         window,
         [](GLFWwindow *window, int key, int scancode, int action, int mods)
         {
+            (void)(mods);
+            (void)(scancode);
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
                 glfwSetWindowShouldClose(window, GLFW_TRUE);
         });
@@ -82,11 +84,11 @@ int Chapter2::GLFW_main(void)
 
     // ready to render VS and PS shader program (compile + attach + link + use shader program!)
     const GLuint shaderVertex = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(shaderVertex, 1, &shaderCodeVertex, nullptr);
+    glShaderSource(shaderVertex, 1, &Chapter2_GLFW_shaderCodeVertex, nullptr);
     glCompileShader(shaderVertex);
 
     const GLuint shaderFragment = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(shaderFragment, 1, &shaderCodeFragment, nullptr);
+    glShaderSource(shaderFragment, 1, &Chapter2_GLFW_shaderCodeFragment, nullptr);
     glCompileShader(shaderFragment);
 
     const GLuint program = glCreateProgram();

@@ -23,5 +23,15 @@
             "src": "code",
             "revision": "a9f82dbe0b8a658003f93c7b5108ee4521458a18"
         }
+    },
+    {
+        "name": "glm",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/g-truc/glm.git",
+            "src": "glm",
+            "header_only": true,
+            "revision": "0.9.9.8"
+        }
     }
 ]
