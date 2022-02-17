@@ -9,6 +9,7 @@
 
 #include "Chapters.h"
 
+// the STB library has separate headers for loading and saving images
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -124,9 +125,11 @@ int Chapter2::STB_main()
 
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+    // try to load image as a 3-channel RGB image
     int w, h, comp;
     const uint8_t *img = stbi_load("Data/ch2_sample3_STB.jpg", &w, &h, &comp, 3);
 
+    // OpenGL DSA fashion, create texture object
     GLuint texture;
     glCreateTextures(GL_TEXTURE_2D, 1, &texture);
     glTextureParameteri(texture, GL_TEXTURE_MAX_LEVEL, 0);
