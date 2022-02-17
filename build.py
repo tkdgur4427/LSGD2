@@ -5,9 +5,9 @@ from SGDPyUtil.powershell_utils import execute_command
 
 def main():
     # build configuration
-    # build_configuration = BuildConf.DEBUG
+    build_configuration = BuildConf.DEBUG
     # build_configuration = BuildConf.PROFILE
-    build_configuration = BuildConf.RELEASE
+    # build_configuration = BuildConf.RELEASE
 
     # collect modules
     FastBuild.instance().collect_modules()
@@ -39,6 +39,10 @@ def main():
     bff_path = os.path.abspath(os.path.join(".", "Intermediate", "fbuild.bff"))
     fbuild_cmd = f"fbuild -config {bff_path} {debug_arg}"
     execute_command(fbuild_cmd, True, fbuild_path)
+
+    # add symbolic link
+    data_path = os.path.abspath(os.path.join(".", "Data"))
+    FastBuild.instance().add_sym_link_to_output(data_path, "Data")
 
     # debug executable
     try_debug = True
