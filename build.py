@@ -28,7 +28,7 @@ def main():
     FastBuild.instance().generate_bff_file(build_configuration)
 
     # define debug mode
-    is_debug_mode = True
+    is_debug_mode = False
     debug_arg = ""
     if is_debug_mode:
         debug_arg = "-verbose"

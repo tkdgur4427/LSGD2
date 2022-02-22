@@ -21,7 +21,8 @@
             "type": "git",
             "url": "https://github.com/assimp/assimp.git",
             "src": "code",
-            "revision": "a34688230d152345d04710e256224b71ce8ba8a1"
+            "revision": "a34688230d152345d04710e256224b71ce8ba8a1",
+            "build_lib_folder": "lib"
         }
     },
     {
@@ -57,6 +58,17 @@
                     "imm32.lib"
                 ]
             }
+        }
+    },
+    {
+        "name": "meshoptimizer",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zeux/meshoptimizer",
+            "revision": "v0.16",
+            "cmake_args": "-D CMAKE_MSVC_RUNTIME_LIBRARY=\"MultiThreaded$<$<CONFIG:Debug>:Debug>\"",
+            "build_lib_folder": ".",
+            "generate_include_folder_from_src": true
         }
     }
 ]
