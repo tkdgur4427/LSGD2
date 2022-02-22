@@ -16,9 +16,8 @@ def main():
     FastBuild.instance().import_modules()
 
     # setup third libraries
-    FastBuild.instance().setup_third_libraries(
-        os.path.abspath(os.path.join(".", "LSGD", "ThirdLibrary"))
-    )
+    third_libraries_path = os.path.abspath(os.path.join(".", "LSGD", "ThirdLibrary"))
+    FastBuild.instance().setup_third_libraries(third_libraries_path)
 
     # setup
     output_path = os.path.abspath(os.path.join(".", "Output"))
@@ -29,7 +28,7 @@ def main():
     FastBuild.instance().generate_bff_file(build_configuration)
 
     # define debug mode
-    is_debug_mode = False
+    is_debug_mode = True
     debug_arg = ""
     if is_debug_mode:
         debug_arg = "-verbose"
@@ -43,6 +42,9 @@ def main():
     # add symbolic link
     data_path = os.path.abspath(os.path.join(".", "Data"))
     FastBuild.instance().add_sym_link_to_output(data_path, "Data")
+
+    # setup thrid libraries' bin folder (copy .dll, .pdb files to Output folder)
+    FastBuild.instance().setup_third_libraries_bin_folder(third_libraries_path)
 
     # debug executable
     try_debug = True
