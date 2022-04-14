@@ -19,6 +19,24 @@
             "program": "${workspaceFolder}/build.py",
             "args": [],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "build math launch",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/build_math.py",
+            "args": [],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Debugging",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 6679
+            },
+            "timeout": 30000
         }
     ]
 }
